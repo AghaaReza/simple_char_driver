@@ -45,7 +45,28 @@ cat /dev/simple_char
 
 `sudo rmmod simple_char_driver`
 
+**Build the module**
 
+Insert the module into the kernel
+`sudo insmod simple_char_driver.ko`
+
+Check kernel logs
+`dmesg | tail`
+
+Create the device file (replace <major> with the actual number from dmesg)
+`sudo mknod /dev/simple_char c <major> 0`
+
+Set permissions
+`sudo chmod 666 /dev/simple_char`
+
+Write to device
+`echo "Hello Driver" > /dev/simple_char`
+
+Read from device
+`cat /dev/simple_char`
+
+Remove the module
+`sudo rmmod simple_char_driver`
 
 **Disclaimer**
 
